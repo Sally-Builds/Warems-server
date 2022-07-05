@@ -280,6 +280,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 //login user
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email, password);
 
   if (!email || !password) {
     return next(new AppError('Please enter email or password', 400));
@@ -291,6 +292,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('incorrect user or password', 401));
   }
 
+  console.log(user);
   createSendToken(user, 201, req, res);
 });
 
